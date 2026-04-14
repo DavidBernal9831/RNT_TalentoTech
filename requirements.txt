@@ -1,0 +1,12 @@
+# Librerías base para la aplicación
+streamlit
+pandas
+numpy
+
+# Visualización de datos
+plotly
+matplotlib
+seaborn
+
+# Utilidades (opcional pero recomendado para manejo de Excel si lo llegas a necesitar)
+openpyxl
