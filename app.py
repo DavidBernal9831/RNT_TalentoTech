@@ -36,7 +36,7 @@ if f_cat_insc:
     df_filtered = df_filtered[df_filtered['categoria_actividad_RNT_inscritos'].isin(f_cat_insc)]
 
 # --- DASHBOARD ---
-st.title("📊 Visualizador RNT - Repositorio Git")
+st.title("📊 RNT - Medellín")
 
 # Tarjetas Principales
 c1, c2, c3 = st.columns(3)
@@ -44,7 +44,7 @@ c1.metric("Contribuyentes Únicos", f"{df_filtered['nroid'].nunique():,}")
 c2.metric("Suma Total RNT", f"{int(df_filtered['total_rnt_x'].sum()):,}")
 with c3:
     st.write("**Inscritos (CC)**")
-    st.write(df_filtered['cc_act/inact'].value_counts())
+    st.write(df_filtered['cc_act/inact'].value_counts(dropna=False))
 
 st.divider()
 
