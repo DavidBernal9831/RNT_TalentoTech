@@ -9,7 +9,7 @@ st.set_page_config(layout="wide", page_title="Dashboard RNT")
 @st.cache_data
 def load_data():
     # Buscamos el archivo en la carpeta data
-    path = os.path.join("data", "rnt_med_def.csv")
+    path = os.path.join("./rnt_med_def.csv")
     df = pd.read_csv(path)
     return df
 
