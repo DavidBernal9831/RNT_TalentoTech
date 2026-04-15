@@ -138,7 +138,7 @@ with col_pie:
 st.divider()
 
 # --- FILA 3: Análisis de Omisiones ---
-st.subheader("🚨 Cumplimiento de Obligaciones (Omisos)")
+st.subheader("🚨 Cumplimiento de Obligaciones")
 omiso_años = ['omiso_2022', 'omiso_2023', 'omiso_2024']
 
 # Preparar datos para gráfica de barras
