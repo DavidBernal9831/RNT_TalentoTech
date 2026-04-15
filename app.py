@@ -143,7 +143,7 @@ omiso_años = ['omiso_2022', 'omiso_2023', 'omiso_2024']
 
 # Preparar datos para gráfica de barras
 if not df_filtered.empty:
-    resumen_omiso = df_filtered[omiso_años].apply(pd.Series.value_counts).T
+    resumen_omiso = df_filtered[omiso_años].apply(pd.Series.value_counts(normalize=True).T
     resumen_omiso.index = [idx.replace('omiso_', '') for idx in resumen_omiso.index]
     st.bar_chart(resumen_omiso)
 else:
