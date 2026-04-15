@@ -26,8 +26,8 @@ def load_data():
     df['total_omisos'] = df['total_omisos'].fillna(0)
     
     # Manejo de nulos en categorías
-    df['categoria_actividad_RNT'] = df['categoria_actividad_RNT'].fillna("SIN CATEGORÍA")
-    df['categoria_actividad_RNT_inscritos'] = df['categoria_actividad_RNT_inscritos'].fillna("NO INSCRITO")
+    df['categoria_final'] = df['categoria_final'].fillna("SIN CATEGORÍA")
+    # df['categoria_final_inscritos'] = df['categoria_final_inscritos'].fillna("NO INSCRITO")
     df['rnt_segmento'] = df['rnt_segmento'].astype(str).fillna("No definido")
     
     # Columnas de cumplimiento (ICA y Omisos)
@@ -62,16 +62,16 @@ f_segmento = st.sidebar.multiselect(
 # Categoría Actividad RNT (General)
 f_cat_rnt = st.sidebar.multiselect(
     "Categoría Actividad RNT",
-    options=sorted(df['categoria_actividad_RNT'].unique()),
-    default=df['categoria_actividad_RNT'].unique()
+    options=sorted(df['categoria_final'].unique()),
+    default=df['categoria_final'].unique()
 )
 
-# Categoría Actividad RNT (Inscritos)
-f_cat_inscritos = st.sidebar.multiselect(
-    "Categoría Actividad (Inscritos)",
-    options=sorted(df['categoria_actividad_RNT_inscritos'].unique()),
-    default=df['categoria_actividad_RNT_inscritos'].unique()
-)
+# # Categoría Actividad RNT (Inscritos)
+# f_cat_inscritos = st.sidebar.multiselect(
+#     "Categoría Actividad (Inscritos)",
+#     options=sorted(df['categoria_final_inscritos'].unique()),
+#     default=df['categoria_final_inscritos'].unique()
+# )
 
 # Rango de Omisos
 max_omisos = int(df['total_omisos'].max())
@@ -81,8 +81,8 @@ f_omisos = st.sidebar.slider("Rango de Omisos Acumulados", 0, max_omisos, (0, ma
 df_filtered = df[
     (df['cc_act/inact'].isin(f_cc)) &
     (df['rnt_segmento'].isin(f_segmento)) &
-    (df['categoria_actividad_RNT'].isin(f_cat_rnt)) &
-    (df['categoria_actividad_RNT_inscritos'].isin(f_cat_inscritos)) &
+    (df['categoria_final'].isin(f_cat_rnt)) &
+    # (df['categoria_final_inscritos'].isin(f_cat_inscritos)) &
     (df['total_omisos'].between(f_omisos[0], f_omisos[1]))
 ]
 
